@@ -10,8 +10,8 @@ import { useDisclosure } from "@nextui-org/react";
 // import { getAllConfigDataRequest } from "@/config/api/server/menu.api";
 import useHomeQuery from "@/hooks/use-home-query";
 
-const HomeModule = () => {
-  const { data:configData } = useQuery(useHomeQuery())
+const HomeModule = ({configData}) => {
+  // const { data:configData } = useQuery(useHomeQuery())
   const locationModalState = useDisclosure();
 // console.log(configData)
   return (

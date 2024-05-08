@@ -2,7 +2,7 @@ import { Manrope } from "next/font/google";
 import Layout from "@/components/layout/Layout";
 import ReactQueryProvider from "@/config/provider/ReactQueryProvider";
 import NextUIThemeProvider from "@/config/provider/NextUIThemeProvider";
-import { getAllConfigDataRequest } from "@/config/api/server/menu.api";
+// import { getAllConfigDataRequest } from "@/config/api/server/menu.api";
 import {
   metaDescription,
   metaTitle,
@@ -47,13 +47,13 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-  const configData = await getAllConfigDataRequest();
+  // const configData = await getAllConfigDataRequest();
   return (
     <html lang="en">
       <body className={`${manrope.className}`}>
         <ReactQueryProvider>
           <NextUIThemeProvider>
-            <Layout configData={configData}>{children}</Layout>
+            <Layout>{children}</Layout>
           </NextUIThemeProvider>
         </ReactQueryProvider>
         <Toaster />

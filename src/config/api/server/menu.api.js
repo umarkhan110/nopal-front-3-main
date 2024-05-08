@@ -11,7 +11,7 @@ import {
 export async function getAllConfigDataRequest() {
   try {
     const res = await fetch(`${baseURL}${GET_CONFIG_ENDPOINT}`, {
-      cache: "no-store",
+      // cache: "no-store",npm run dev
     });
 
     if (!res.ok) {
