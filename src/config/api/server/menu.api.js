@@ -11,14 +11,14 @@ import {
 export async function getAllConfigDataRequest() {
   try {
     const res = await fetch(`${baseURL}${GET_CONFIG_ENDPOINT}`, {
-      // cache: "no-store",npm run dev
+      cache: "no-store",
     });
 
-    if (!res.ok) {
-      throw new Error("Failed to fetch data");
-    }
+    // if (!res.ok) {
+    //   throw new Error("Failed to fetch data");
+    // }
 
-    return res.json();
+    return await res.json();
   } catch (error) {
     console.error("Error fetching data:", error.message);
     throw error;

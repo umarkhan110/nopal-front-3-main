@@ -20,7 +20,7 @@ import { useDisclosure } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
 import useHomeQuery from "@/hooks/use-home-query";
 
-const Navbar = ({ configData }) => {
+const Navbar = () => {
   const locationModalState = useDisclosure();
   const currentPathname = usePathname();
   const router = useRouter();
@@ -42,8 +42,8 @@ const Navbar = ({ configData }) => {
   //   queryFn: () => Services.getAllConfigData(),
   // });
 
-  const  { data, isSuccess, isLoading } = useHomeQuery()
-  console.log("line 18",data)
+  const  { data:configData, isSuccess, isLoading } = useHomeQuery()
+  console.log("line 18",configData)
 
   const handleCartClick = () => {
     setIsCheckoutSidebarOpen(true);
@@ -52,15 +52,15 @@ const Navbar = ({ configData }) => {
   // *set config data in the global state and first branch if not selected
   useEffect(() => {
     if (isSuccess) {
-      setConfigData(data);
+      setConfigData(configData);
       if (
         currentBranch &&
-        data?.branches?.filter((items) => items.id === currentBranch?.id)
+        configData?.branches?.filter((items) => items.id === currentBranch?.id)
           ?.length > 0
       ) {
         setCurrentBranch(currentBranch);
       } else if (
-        data?.branches?.filter((items) => items.id !== currentBranch?.id)
+        configData?.branches?.filter((items) => items.id !== currentBranch?.id)
           ?.length > 0
       ) {
         setCurrentBranch(data?.branches[0]);
