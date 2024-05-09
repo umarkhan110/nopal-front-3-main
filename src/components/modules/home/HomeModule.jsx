@@ -10,10 +10,12 @@ import { useDisclosure } from "@nextui-org/react";
 // import { getAllConfigDataRequest } from "@/config/api/server/menu.api";
 import useHomeQuery from "@/hooks/use-home-query";
 
-const HomeModule = ({configData}) => {
+const HomeModule = () => {
+  const  { data } = useHomeQuery()
+  const configData = data;
   // const { data:configData } = useQuery(useHomeQuery())
   const locationModalState = useDisclosure();
-// console.log(configData)
+console.log("line 17",data)
   return (
     <>
       <div className="space-y-10 md:space-y-20">

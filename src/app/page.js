@@ -9,15 +9,14 @@ import {
 export default async function Home() {
   const queryClient = new QueryClient();
 
-    const data = await queryClient.fetchQuery({
+     await queryClient.prefetchQuery({
       queryKey: ["configData"],
       queryFn: getAllConfigDataRequest,
     });
-    console.log("Prefetch Query Result:", data);
   return (
     <>
       <HydrationBoundary state={dehydrate(queryClient)}>
-        <HomeModule configData={data}/>
+        <HomeModule />
       </HydrationBoundary>
     </>
   );

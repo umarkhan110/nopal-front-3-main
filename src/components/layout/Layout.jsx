@@ -1,12 +1,15 @@
+// import useHomeQuery from "@/hooks/use-home-query";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 
-const Layout = ({ configData, children }) => {
+const Layout = ({ children }) => {
+  // const  { data } = useHomeQuery()
+  // const configData = data;
   return (
     <>
-      <Navbar configData={configData} />
+      <Navbar  />
       <div className="viewport_height">{children}</div>
-      <Footer configData={configData} />
+      <Footer  />
     </>
   );
 };

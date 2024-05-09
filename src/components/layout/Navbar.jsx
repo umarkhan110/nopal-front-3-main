@@ -18,6 +18,7 @@ import NavRightContent from "./NavRightContent";
 import LocationModal from "../modules/home/LocationModal";
 import { useDisclosure } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
+import useHomeQuery from "@/hooks/use-home-query";
 
 const Navbar = ({ configData }) => {
   const locationModalState = useDisclosure();
@@ -36,10 +37,13 @@ const Navbar = ({ configData }) => {
   const [isCheckoutSidebarOpen, setIsCheckoutSidebarOpen] = useState(false);
   const [isAuthSidebarOpen, setIsAuthSidebarOpen] = useState(false);
 
-  const { data, isSuccess, isLoading } = useQuery({
-    queryKey: ["config"],
-    queryFn: () => Services.getAllConfigData(),
-  });
+  // const { data, isSuccess, isLoading } = useQuery({
+  //   queryKey: ["config"],
+  //   queryFn: () => Services.getAllConfigData(),
+  // });
+
+  const  { data, isSuccess, isLoading } = useHomeQuery()
+  console.log("line 18",data)
 
   const handleCartClick = () => {
     setIsCheckoutSidebarOpen(true);
